@@ -1,0 +1,146 @@
+.landing {
+  overflow: hidden;
+  .bg-img {
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2887px;
+    background-image: url(../img/frontpage_bigimage.jpg);
+    background-size: 1300px;
+    background-repeat: no-repeat;
+    background-color: #e7e6e4;
+    background-position: center 0px;    
+    @include hardwareAcceleration;   
+    @media #{$small-only} {
+      background-size: cover;
+      height: 100%;
+    }     
+  }
+}
+
+.frontpage-landing-content {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  .innerbox {
+    background-color: #fff;
+    width: 350px;
+    margin: 2.5% auto auto auto;
+    padding: 35px 35px 20px 35px;
+    z-index: 400;
+    position: relative;
+    display: block;
+    @include hardwareAcceleration;
+    @include transition(opacity 0.2s linear);
+    @include opacity(1);
+    @media #{$small-only} {
+      width: 100% !important;
+    }
+
+    &.hidden {
+      @include opacity(0);
+    }
+
+    .logo-emblem {
+      width: 30px;
+      height: 30px;
+      background-image: url(../img/logo-emblem.png);
+      background-size: cover;
+      margin: 10px auto;
+    }
+
+    h1 {
+      font-family: $amerigo;
+      font-weight: $font-bold;
+      font-size: 30px;
+      line-height: 30px;
+      color: $dark-green;
+      text-transform: uppercase;
+      letter-spacing: 0px;
+    }
+
+    p {
+      font-family: $amerigo;
+      font-weight: $font-regular;
+      line-height: 16px;
+      color: $dark-green;
+    }
+
+  }
+
+  .hotspotcontainer {
+    position: relative;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    visibility: hidden;
+    @include hardwareAcceleration;
+    @include opacity(0);
+    @include transition(opacity 0.3s linear);
+    &.show {
+      visibility: visible;
+      @include opacity(1);
+    }
+    a.hotspot {
+      display: inline-block;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      &:after {
+        content: '';
+        background-color: $white;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        text-align: center;
+        @include animation(pulse 3.0s infinite);
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+      }
+      &:before {
+        display: inline-block;
+        margin: 12px;
+        content: '';
+        position: absolute;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        background-color: $dark-green;
+        width: 15px;
+        height: 15px;
+      }
+      .no-touch & {
+        &:hover {
+          &:after {
+            @include animation(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+  50% {
+    @include transform(scale(1.2));
+    opacity: 0.5;
+  }
+  100% {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+}

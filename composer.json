@@ -1,0 +1,10 @@
+{
+  "name": "city-of-helsinki/kauppahalli",
+  "type": "wordpress-theme",
+	"version": "master",
+  "authors": [],
+	"require": {
+    "wecodemore/wpstarter": "~2.0",
+    "johnpbloch/wordpress-core": ">5.0"
+  }
+}

@@ -1,0 +1,26 @@
+<?php
+/**
+ * Template Name: Contact
+ *
+ * @package kauppahalli
+ */
+
+get_header(); ?>
+
+<?php while ( have_posts() ) : the_post(); ?>
+
+<div class="row">
+  <div class="large-12 columns content center">
+    <div id="map"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-10 large-offset-1 columns content center">
+    <?php the_content(); ?>
+  </div>
+</div>
+
+
+<?php endwhile; // end of the loop. ?>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<?php get_footer(); ?>

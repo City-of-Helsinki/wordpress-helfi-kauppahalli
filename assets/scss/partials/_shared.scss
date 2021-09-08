@@ -1,0 +1,61 @@
+$amerigo: "Amerigo BT W03", georgia, times, serif;
+
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 700;
+
+$dark-green: #104736;
+$light-green: #4C7568;
+$dark-turquoise: #0078a0;
+$white: #FFF;
+
+.button {
+  background-color: $dark-green;
+  color: $white !important;
+  font-family: $amerigo;
+  font-size: 12px;
+  font-weight: $font-bold;
+  letter-spacing: 2px;
+  padding: 10px 15px 10px 15px;
+  text-transform: uppercase;
+  transition: all 0.1s linear;
+  &:hover {
+    color: $white;
+    background-color: $light-green;
+  }
+}
+
+@mixin hardwareAcceleration {
+  @include transform-style(preserve-3d);
+  @include backface-visibility(hidden);
+}
+
+@mixin opacity($trans) {
+  filter: alpha(opacity=($trans * 100));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})";
+  -moz-opacity: $trans;
+  -khtml-opacity: $trans;
+  opacity: $trans;
+}
+
+@mixin selection-style($b, $c) {
+  background: $b;
+  color: $c;
+  text-shadow: none !important;
+}
+
+@mixin selection($b, $c) {
+  ::-webkit-selection {
+    @include selection-style($b, $c);
+  }
+  ::-moz-selection {
+    @include selection-style($b, $c);
+  }
+  ::selection {
+    @include selection-style($b, $c);
+  }
+}
+
+*, *:after, *:before {
+  @include selection($dark-green, $white);
+}
